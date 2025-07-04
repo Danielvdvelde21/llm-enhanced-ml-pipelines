@@ -25,7 +25,7 @@ The project is structured by data modality, with each directory containing prepr
 ```
 
 * **Tabular/**: Tabular data experiments
-* **Textual/**: Text-based experiments, split by evaluation method (qualitative vs. non-qualitative)
+* **Textual/**: Text-based experiments, split by data generation method (qualitative vs. non-qualitative)
 * **Image/**: Visual experiments using local VLLMs, GANs, and Stable Diffusion
 
 ## Prerequisites
