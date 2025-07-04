@@ -1,75 +1,89 @@
-Master Thesis
+# Master Thesis
 
-Exploring LLM-Driven Enhancement Techniques for Machine Learning Pipelines Aimed at Improving Prediction Performance
+**Exploring LLM-Driven Enhancement Techniques for Machine Learning Pipelines Aimed at Improving Prediction Performance**
 
-Author: Daniel van der Velde
+**Author:** Daniel van der Velde
 
-This repository contains the source code accompanying the master’s thesis report. The implementation reflects the framework and experimental setup described in the thesis, and is primarily written in Jupyter notebooks. The structure is organized by data modality and experimental design.
+This repository contains the source code accompanying the master's thesis. The implementation reflects the framework and experimental setup described in the thesis and is primarily organized using Jupyter Notebooks.
 
-Repository Structure:
+## Repository Structure
 
-The repository is divided into three main directories, each corresponding to a data modality:
-* Tabular/: Contains experiments and preprocessing scripts for tabular data.
-  * Preprocessing/: Script to preprocess data
-   
-* Textual/: Contains experiments and preprocessing scripts for textual data.
-  * Qualitative Loop/: Experiments with LLMS with validation
-  * Non-Qualitative Loop/: Experiments with LLMs no validation
-  * Preprocessing/: Script to preprocess data
+The project is structured by data modality, with each directory containing preprocessing and experiment notebooks:
 
-* Image/: Contains experiments and preprocessing scripts for image data.
-  * Ollama Only/: Experiments with VLLMs
-  * Stable Diffusion/ Experiments with SD/GAN
-  * Preprocessing/: Script to preprocess data
+```
+.
+├── Tabular/
+│   └── Preprocessing/
+├── Textual/
+│   ├── Qualitative Loop/
+│   ├── Non-Qualitative Loop/
+│   └── Preprocessing/
+├── Image/
+│   ├── Ollama Only/
+│   ├── Stable Diffusion/
+│   └── Preprocessing/
+```
 
-Each experiment is implemented in a standalone Jupyter notebook. Preprocessing scripts should be executed before running any experiments.
+* **Tabular/**: Tabular data experiments and preprocessing scripts
+* **Textual/**: Text-based experiments, split by evaluation method (qualitative vs. non-qualitative)
+* **Image/**: Visual experiments using local VLLMs, GANs, and Stable Diffusion
 
-Prerequisites:
+Each experiment is implemented in a standalone notebook. Relevant preprocessing scripts should be executed beforehand.
 
-Data Requirements:
+## Prerequisites
 
-To reproduce the experiments, three datasets must be downloaded and placed in the corresponding directories:
-* Tabular dataset: UCI Machine Learning Repository: https://archive.ics.uci.edu/dataset/2/adult 
-* Textual dataset: IMDB Dataset of 50K Movie Reviews: https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews 
-* Image dataset: House Prices and Images - SoCal: https://www.kaggle.com/datasets/ted8080/house-prices-and-images-socal
+### Data Requirements
 
-Each dataset should be stored in the appropriate modality directory. Both the preprocessing scripts and the experiment notebooks assume the data files are located within these directories. Similarly, the preprocessed data is expected to reside in the same folder as the corresponding experiment notebook.
+To reproduce the experiments, download the following datasets and place them in their respective directories:
 
-Preprocessing:
+* **Tabular**: [UCI Adult Dataset](https://archive.ics.uci.edu/dataset/2/adult)
+* **Textual**: [IMDB 50K Movie Reviews](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
+* **Image**: [House Prices & Images (SoCal)](https://www.kaggle.com/datasets/ted8080/house-prices-and-images-socal)
 
-Each data modality includes one or more preprocessing notebooks:
-* Tabular Preprocessing.ipynb
-* Tabular LLM Preprocessing.ipynb
-* Textual Preprocessing.ipynb
-* Image Preprocessing.ipynb
+Both the raw data and the preprocessed outputs should reside in the same directory as the corresponding experiment notebooks.
 
-Run the relevant preprocessing notebook before executing experiments. Ensure the resulting preprocessed data is saved in the same directory as the associated experiment notebook.
+### Preprocessing Notebooks
 
-Local LLM Setup with Ollama:
+Each modality includes one or more preprocessing notebooks. Run these prior to executing any experiments:
 
-Experiments involving local (vision) large language models ((V)LLMs) require the installation of the Ollama interface. Note that all experiments in the thesis were executed using Ollama version 0.6.4. Please be aware that there are meaningful differences between versions, and compatibility cannot be guaranteed with newer releases.
-Once Ollama is installed, required models will be downloaded automatically upon first use. This configuration supports most of the experiments in this repository, including those under the tabular, textual, and image (Ollama-based) directories.
+* `Tabular Preprocessing.ipynb`
+* `Tabular LLM Preprocessing.ipynb`
+* `Textual Preprocessing.ipynb`
+* `Image Preprocessing.ipynb`
 
-Ollama download: https://github.com/ollama/ollama/releases
+## Local LLM Setup (Ollama)
 
-Image Experiments and Model Weights:
+Some experiments depend on locally hosted large language or vision-language models via [Ollama](https://github.com/ollama/ollama/releases).
 
-Most image-based experiments using Stable Diffusion will run correctly once the appropriate Python dependencies are installed. However, the GAN-based image upscaling experiments require the manual download of model weights for RealESRGAN.
-To trigger an automatic download of the RealESRGAN weights, modify the following line in the relevant image upscaling script:
+All experiments in the thesis were conducted using **Ollama v0.6.4**. Compatibility with newer versions may vary.
+Once installed, Ollama will automatically download any required models upon first use.
 
+## Image Experiments and Model Weights
+
+Most image-based experiments using Stable Diffusion will work once the necessary Python dependencies are installed.
+
+However, GAN-based upscaling experiments using RealESRGAN require manual weight downloads. To trigger this automatically, update the following line in the relevant notebook:
+
+```
 model.load_weights('weights/RealESRGAN_x4.pth', download=False)
+```
 
-Change it to:
+to
 
+```
 model.load_weights('weights/RealESRGAN_x4.pth', download=True)
+```
 
-This only needs to be done (run) once.
+This only needs to be done once.
 
-Running the Experiments:
+## Running the Experiments
 
-After having done the previous steps, all experiments can be run independently. Each notebook includes a clearly defined parameter section near the beginning, where key variables and configurations can be adjusted. The implications of these parameters are discussed in the thesis report.
+Each notebook is self-contained and can be executed independently. A parameter configuration section is provided near the beginning of each file.
+Adjust parameters as needed. Their impact is discussed in the thesis.
 
-Experimental Framework:
+## Experimental Framework
 
-The underlying experimental design, including the distinction between qualitative and non-qualitative evaluation, model selection, and evaluation procedures, is described in detail in the thesis report. Please refer to the section titled "Experiments" for further insight into the structure and goals of each experimental code book.
+The underlying experimental framework, including evaluation loops, model selection, and assessment strategies, is explained in the thesis.
+Refer to the section titled **"Experiments"** for full context on the setup and structure.
+
 For further clarification or details not included in this repository, consult the full thesis document.
