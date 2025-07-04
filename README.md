@@ -1,6 +1,7 @@
 Master Thesis
 
 Exploring LLM-Driven Enhancement Techniques for Machine Learning Pipelines Aimed at Improving Prediction Performance
+
 Author: Daniel van der Velde
 
 This repository contains the source code accompanying the master’s thesis report. The implementation reflects the framework and experimental setup described in the thesis, and is primarily written in Jupyter notebooks. The structure is organized by data modality and experimental design.
@@ -48,6 +49,7 @@ Local LLM Setup with Ollama:
 
 Experiments involving local (vision) large language models ((V)LLMs) require the installation of the Ollama interface. Note that all experiments in the thesis were executed using Ollama version 0.6.4. Please be aware that there are meaningful differences between versions, and compatibility cannot be guaranteed with newer releases.
 Once Ollama is installed, required models will be downloaded automatically upon first use. This configuration supports most of the experiments in this repository, including those under the tabular, textual, and image (Ollama-based) directories.
+Ollama download: https://github.com/ollama/ollama/releases
 
 Image Experiments and Model Weights:
 
@@ -55,9 +57,12 @@ Most image-based experiments using Stable Diffusion will run correctly once the 
 To trigger an automatic download of the RealESRGAN weights, modify the following line in the relevant image upscaling script:
 
 model.load_weights('weights/RealESRGAN_x4.pth', download=False)
+
 Change it to:
+
 model.load_weights('weights/RealESRGAN_x4.pth', download=True)
-This only needs to be done once.
+
+This only needs to be done (run) once.
 
 Running the Experiments:
 
