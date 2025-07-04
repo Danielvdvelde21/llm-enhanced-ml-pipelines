@@ -24,39 +24,37 @@ The project is structured by data modality, with each directory containing prepr
 │   └── Preprocessing/
 ```
 
-* **Tabular/**: Tabular data experiments and preprocessing scripts
+* **Tabular/**: Tabular data experiments
 * **Textual/**: Text-based experiments, split by evaluation method (qualitative vs. non-qualitative)
 * **Image/**: Visual experiments using local VLLMs, GANs, and Stable Diffusion
-
-Each experiment is implemented in a standalone notebook. Relevant preprocessing scripts should be executed beforehand.
 
 ## Prerequisites
 
 ### Data Requirements
 
-To reproduce the experiments, download the following datasets and place them in their respective directories:
+To reproduce the experiments, download the following datasets and place them in their respective preprocessing subdirectories:
 
 * **Tabular**: [UCI Adult Dataset](https://archive.ics.uci.edu/dataset/2/adult)
 * **Textual**: [IMDB 50K Movie Reviews](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
 * **Image**: [House Prices & Images (SoCal)](https://www.kaggle.com/datasets/ted8080/house-prices-and-images-socal)
 
-Both the raw data and the preprocessed outputs should reside in the same directory as the corresponding experiment notebooks.
-
 ### Preprocessing Notebooks
 
-Each modality includes one or more preprocessing notebooks. Run these prior to executing any experiments:
+Each modality includes one or more preprocessing notebooks. Run these before executing any experiments:
 
 * `Tabular Preprocessing.ipynb`
 * `Tabular LLM Preprocessing.ipynb`
 * `Textual Preprocessing.ipynb`
 * `Image Preprocessing.ipynb`
 
+The preprocessed data outputs must be moved to the same directory as the corresponding experiment notebooks.
+
 ## Local LLM Setup (Ollama)
 
-Some experiments depend on locally hosted large language or vision-language models via [Ollama](https://github.com/ollama/ollama/releases).
+Experiments depend on locally hosted large language or vision-language models via [Ollama](https://github.com/ollama/ollama/releases).
 
 All experiments in the thesis were conducted using **Ollama v0.6.4**. Compatibility with newer versions may vary.
-Once installed, Ollama will automatically download any required models upon first use.
+Once installed, Ollama will automatically download any required models upon running the experimental code books.
 
 ## Image Experiments and Model Weights
 
