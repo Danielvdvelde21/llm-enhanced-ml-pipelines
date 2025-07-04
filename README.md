@@ -49,6 +49,7 @@ Local LLM Setup with Ollama:
 
 Experiments involving local (vision) large language models ((V)LLMs) require the installation of the Ollama interface. Note that all experiments in the thesis were executed using Ollama version 0.6.4. Please be aware that there are meaningful differences between versions, and compatibility cannot be guaranteed with newer releases.
 Once Ollama is installed, required models will be downloaded automatically upon first use. This configuration supports most of the experiments in this repository, including those under the tabular, textual, and image (Ollama-based) directories.
+
 Ollama download: https://github.com/ollama/ollama/releases
 
 Image Experiments and Model Weights:
